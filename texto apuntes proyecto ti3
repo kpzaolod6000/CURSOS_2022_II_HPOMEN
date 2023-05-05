@@ -1,0 +1,22 @@
+perfil auditor
+perfil docente
+    cursos que lleva
+
+perfil alumno
+    cursos que lleva.
+    asistencia de cursos.
+Perfil de administrador
+        registro de horario 
+        registro dautomatizado
+    registrar docente (automatizado)
+    registrar alumno (automatizado SISACAD)
+Perfil de DIrector
+    todo lo que tiene el auditor
+   
+
+"5 ACTORES" cada actor debe hacer algunas tareas
+
+mi sistema de asistencia tiene x modulos.
+"arquitectura tecnica"
+pmv
+

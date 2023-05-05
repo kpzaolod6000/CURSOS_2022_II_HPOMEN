@@ -1,0 +1,223 @@
+
+
+EL CONCEPTO DE UN CERTIFICADO
+
+Suponga que el usuario Alice desea verificar una firma digital emitida por el usuario Bob. Consulta un servicio de directorio y obtiene la clave pública de Bob. Como se explica en la Secc. 1.4, Alice necesita convencerse de la autenticidad de esa clave pública. Para esto se utilizan los certificados LOS CERTIFICADOS SE USAN PARA AUNTENTICIDAD DE UNA CLAVE PUBLICA DEL USUARIO
+Los certificados son estructuras de datos que vinculan claves públicas a entidades y que están firmadas por un tercero. Si Alice tiene un certificado para la clave pública de Bob y si Alice confía en el tercero que firmó el certificado y también confía en la clave de verificación de firma del tercero, la verificación de la firma del certificado convence a Alice de la autenticidad de la clave pública de Bob. 
+
+los certificados reducen la confianza en una clave pública de una entidad a la confianza en alguna autoridad.
+
+cONTENIDOS MINIMOS DE UNN CERTIFICADO:
+1. El nombre del sujeto al que está vinculada la clave pública del certificado. Esto también puede ser un seudónimo.
+2. La clave pública que está ligada a la entidad.
+3. El algoritmo criptográfico con el que se utilizará la clave pública.
+4. El número de serie del certificado.
+5. El período de validez del certificado.
+6. El nombre del emisor del certificado que firmó el certificado.
+7. Restricciones que aplican al uso de la clave pública en el certificado. Por ejemplo, el uso puede estar restringido a la autenticación de entidades.
+
+El contenido del certificado está firmado por el tercero emisor y la firma se adjunta al certificado.
+
+Los certificados autofirmados se utilizan para hacer que las claves públicas de un emisor estén disponibles para una aplicación que solo puede procesar las claves públicas contenidas en los certificados.
+con la clave publica verificas la firma del certificado.
+
+X.509 CERTIFICATES
+Es el estandar mas importante
+Es recomendado por el sector de normalización de telecomunicaciones de la Unión Internacional de Telecomunicaciones (UIT-T).
+En  ITU-T X.509 se define dos tipos 
+    -el primero es el de un "certificado de clave pública" que vincula una clave pública a un sujeto
+    -El segundo tipo es el de un "certificado de atributo" que vincula atributos a un sujeto. 
+
+STRUCTURE
+
+Se especifican utilizando la notación de sintaxis abstracta versión 1 (ASN.1) como lenguaje de especificacion. este lenguaje se usa para la descripcion de estructura de datos
+
+ASN.1 esta estantarizado por ITU-T
+
+ASN.1 permite varias reglas de codificación. Los certificados X.509 se codifican de acuerdo con las reglas de codificación distinguidas (DER) descritas en [16]. DER prescribe la codificación única de cualquier estructura ASN.1 y se basa en las reglas básicas de codificación (BER).
+
+Los certificados x.509 se codificadn siguiente las reglas de codificacion distinguidads (DER)
+BER presscribe cualquier estrucutra ASN1 basandose en las reglas basicas de codificacion BER
+
+
+Es una secuencia ordenada lista de elementos Un certificado X.509 tiene tres elementos. 
+- El primer elemento es tbsCertificate que es del tipo TBSCertificate. Contiene los contenidos
+    del certificado como se describe en la Secc. 2.1, por ejemplo, la clave pública y el nombre
+    de su dueño. 
+- El segundo elemento es signatureAlgorithm que describe el algoritmo de firma utilizado por el tercero para firmar el certificado. este elemento
+    contiene el OID correspondiente y los parámetros necesarios. es de tipo
+    Identificador de algoritmo. 
+- El tercer elemento es signatureValue. Contiene la firma del certificado. Es de tipo CADENA DE BITS
+
+
+COMPONENTES DEL TBS CERTIFICATE
+-Version- 
+x509v1,v2,v3 la diferencia es que la v3 tiene extensiones y contiene los campos de  emitrUniqueID y subjectUniqueID,
+los valores 0,1,2 son respectivamente v1,v2,v3
+
+-serialNumber-
+
+El emisor aigna un entero no negativo codificado como un ASN1Integer de 20 bytes
+ la combinación del nombre del emisor o editor y el número de serie identifica de manera única un certificado. 
+
+
+-siganture-
+El emisor de un certificado X.509 firma el certificado. el obligatorio
+firma de campo describe el algoritmo de firma que utilizó el emisor para firmar
+el certificado.
+
+Tipo identificador de firmas "contiene el OID del algoritmo de firma."
+
+ se les proporciona la clave pública que se utilizará para verificar la
+la firma del certificado
+
+-Issuer- 
+El emisor está representado por un
+Cadena ASN.1 llamada nombre distinguido (DN)
+
+el DN refleja una jerarquía lógica de una persona que pertenece a un
+unidad organizativa que forma parte de una organización ubicada en un país.
+la codificación de un DN X.509 debe ser UTF8 o PrintableString.
+
+Los usuarios más antiguos pueden utilizar otra codificación como TeletexString o BMPString.
+
+-validity-
+ El campo de validez indica el período de validez de un certificado. Este campo contiene las dos fechas notBefore y notAfter. 
+
+
+-subject-
+El campo asunto describe el propietario del certificado, es decir, la entidad
+que posee la clave privada correspondiente a la clave pública 
+. Si el sujeto de un certificado es el emisor de otro certificado, entonces es esencial que el DN del sujeto coincida con el DN del emisor de todos
+certificados emitidos por esta entidad y que el DN del sujeto no esté vacío. 
+
+-subjectPublicKeyInfo-
+
+El campo subjectPublicKeyInfo contiene la clave pública certificada por el certificado. La clave pública se describe como una secuencia que contiene el OID de un algoritmo seguido de parámetros opcionales y la clave pública
+La clave pública se representa mediante el
+Formato ASN.1
+ Este formato viene dado por su codificación DER, que es una cadena binaria.
+
+-emitrUniqueID y subjectUniqueID-
+
+El contenido de ese campo es un binario.
+cadena que es un identificador único para el propietario del certificado.
+
+Asimismo, varios emisores pueden compartir el mismo DN. En este caso, el emisorUniqueID
+campo resuelve la situación. Los campos subjectUniqueID y issuerUniqueID fueron
+introducido en la segunda versión de X.509. Por lo tanto, solo X.509v2 y X.509v3
+
+No se recomeindo porque complica el uso del cerificado
+
+SIGNATURE ALGORITHM
+Como se explicó en la sección anterior, el algoritmo de firma que se utilizó para firmar
+el certificado se especifica dos veces en un certificado X.509, una vez en el tbsCertificate
+y una vez en el campo signatureAlgorithm. La razón de esto sigue sin estar clara.
+    
+SIGNATURE VALUE
+Este campo contiene la firma en el contenido tbsCertificate del certificado. Está
+representado como una cadena de bits.
+
+PGP Certificates
+
+Pretty good privacy (PGP),BASTANTE BUENA PRIVACIDAD
+
+que fue inventado en 1991 por Phil Zimmermann,
+
+establece la confianza en la propiedad de las claves públicas utilizando una red social.
+
+La confianza en la propiedad de una clave pública la establecen los participantes dignos de confianza de la
+red que certifique esta propiedad. 
+
+Los certificados PGP se especifican en la especificación OpenPGP :
+ Contienen al menos una clave pública, que se describe en un llamado paquete de clave pública. 
+Un paquete de clave pública incluye:
+    - El número de versión de PGP que indica qué versión de PGP se utilizó para crear la clave asociada con el certificado.
+    - La hora de creación de la clave
+    -La clave pública junto con el algoritmo en el que se va a utilizar la clave.
+
+Un certificado PGP incluye:.
+- Un paquete de clave pública.
+- Opcionalmente: Firmas para invalidar este certificado
+- nformación de identidad sobre el titular del certificado, por ejemplo, nombre y dirección de correo electrónico.
+- Una firma digital del paquete de clave pública y la información de identidad. Esta firma se emite utilizando la clave privada que corresponde a la clave pública del certificado.
+-Opcionalmente: firmas del paquete de clave pública y la información de identidad de otros usuarios de PGP. Estas firmas certifican la autenticidad de la clave pública contenida en el certificado. Están obligados a establecer confianza en la red de confianza de PGP
+- Opcionalmente: otra información de identidad. Esta información también puede estar firmada.
+- Opcionalmente: atributos del usuario. También pueden estar firmados.
+- Opcionalmente: otras claves públicas del usuario. También pueden estar firmados.
+
+La versión actual de los certificados PGP es la versión 4. Los certificados PGP versión 3 que solo pueden contener una clave pública ya no deben generarse. Sin embargo, las aplicaciones deberían poder procesarlos. La estructura de los certificados PGP versión 4 se muestra en la Fig. 2.2.
+
+
+
+
+CHAPTER 3
+
+confianza directa 
+
+la autenticidad de esos paquetes de software se establece mediante una firma digital. La verificación de
+la firma requiere una clave pública
+
+
+, la confianza en la clave pública se llama directa ya que
+se obtiene directamente de su propietario (el distribuidor de Linux). 
+
+De manera más general, decimos que la confianza en la autenticidad de una clave pública es directa si
+la clave pública se obtiene directamente del propietario de la clave o su propietario confirma directamente
+la autenticidad de la clave de forma convincente para el usuario.
+Más de 150 claves públicas ya están contenidas en Thunderbird al momento de la instalación.
+
+
+Thunderbird calcula una huella digital(fingerprint) del certificado autofirmado que contiene la clave pública. 
+
+Este procedimiento establece la confianza en las claves públicas porque una comunicación adicional
+
+Muchas aplicaciones utilizan claves públicas preinstaladas. Por ejemplo, los sistemas operativos,
+clientes de correo electrónico y navegadores web.
+
+La mayoría de los usuarios confían en esas claves sin comprobar
+a ellos. Sin embargo, como se explicó anteriormente, cualquier usuario puede verificar las huellas dactilares del
+certificados correspondientes.
+
+Para
+ejemplo, cuando se instala un certificado autofirmado en un sistema operativo Windows
+aparece una ventana de diálogo que notifica al usuario sobre la huella digital del certificado.
+
+Otro ejemplo del uso de la confianza directa es el shell seguro (SSH) [8]
+solicitud.
+
+Por lo general, la autenticación de usuario se basa en el nombre de usuario y la contraseña o en una clave pública
+mecanismo.
+
+ Los servidores siempre se autentican mediante un mecanismo de clave pública. Cuando una
+usuario intenta iniciar sesión en el servidor remoto por primera vez, este servidor muestra
+
+Los usuarios pueden establecer confianza directa en esta clave pública mediante la verificación de esta huella digital
+antes de continuar con el procedimiento de inicio de sesión. Si la clave pública del servidor ha sido
+aceptado una vez, siempre se utilizará en el procedimiento de inicio de sesión sin ningún otro
+verificación
+
+WEB TRUST
+
+Por lo tanto, se han introducido otros modelos de confianza.
+Uno de estos modelos alternativos de confianza es la red de confianza. Fue inventado en 1992 por Phil Zimmermann en su sistema PGP [7]. El modelo web de confianza está inspirado en las redes sociales de confianza. En la red de confianza, los usuarios confían en una clave pública si la han obtenido directamente de su propietario (confianza directa) o si un número suficiente de usuarios confiables recomiendan confiar en la clave.
+
+La idea básica de PGP es que los usuarios que confían en una clave pública firmen esta
+llave. 
+Estas firmas se denominan firmas de validez.
+
+a implementación de código abierto correspondiente es la privacidad de GNU
+guardia (GPG).
+
+En una PKI jerárquica, las autoridades de certificación (CA) certifican las claves públicas.
+Las CA implementan un proceso para verificar la autenticidad de las claves públicas, que certificar . Las CA hacen público este proceso para que los usuarios puedan determinar el
+nivel de confianza en las CA.
+
+Las CA asumen la responsabilidad por la autenticidad de las claves públicas que certifican. lo mas
+Un ejemplo importante de una arquitectura PKI jerárquica se basa en el estándar X.509.
+
+Se supone que los emisores de certificados X.509 son CA
+
+Si este valor es verdadero, la clave pública contenida en el certificado se puede usar para verificar las firmas en los certificados. Por el contrario, las claves públicas que se utilizan para verificar
+
+Un TSL es un documento estructurado (por ejemplo, XML o PDF) que contiene información sensible a la seguridad sobre terceros y que está firmado por una parte confiable.

@@ -1,0 +1,140 @@
+Internet es el dominio de aplicación más importante de la criptografía de clave pública y las infraestructuras de clave pública
+
+ El comercio electrónico se refiere a cualquier tipo de negocio en Internet.
+
+Otra aplicación de Internet es e-health. La salud electrónica abarca servicios como el mantenimiento de registros médicos electrónicos que permiten una fácil comunicación de los datos de los pacientes entre diferentes profesionales de la salud, organizaciones y empresas. Otro ejemplo de e-salud es la telemedicina, que incluye todo tipo de mediciones físicas y psicológicas que no requieren que el paciente se desplace a
+un especialista. 
+
+Muchas unidades gubernamentales, como la legislatura, el poder judicial o la administración, aplican el gobierno electrónico para mejorar la eficiencia interna y la prestación, accesibilidad y comodidad de los servicios públicos o los procesos de gobernabilidad democrática.
+
+
+public key cryptography and PKI.
+
+
+
+Nuestra economía depende cada vez más de infraestructuras interdependientes y cibernéticas y de ataques no tradicionales a nuestras infraestructuras e información.
+
+Los objetivos de protección de confidencialidad, integridad, autenticación de entidades, autenticidad de datos y no repudio que se pueden lograr mediante la criptografía de clave pública.
+
+
+CONFIDENCICAIDAD
+Se refiere a la propiedad de que los datos o la información no se ponen a disposición ni se divulgan a personas o procesos no autorizados.
+La confidencialidad está íntimamente relacionada con la privacidad. 
+La privacidad es la capacidad de un individuo o
+grupo para mantener la información sobre sí mismo confidencial y para controlar el acceso y uso de dicha información
+EJEMPLO:, los correos electrónicos contienen información confidencial.
+información potencial.
+
+" en lo que los analistas describieron como potencialmente la violación de privacidad más importante de la era digital”
+
+INTEGRIDAD
+
+La integridad se refiere a la propiedad de que los datos no han sido modificados. 
+
+ Dichos cambios pueden, por ejemplo, hacer que los sistemas transmitan información confidencial a entidades no autorizadas. Dado que la integridad es un objetivo de protección tan importante, las evaluaciones de criterios comunes (CC) requieren software evaluado, el llamado objetivo de evaluación (TOE), para proporcionar "controles para garantizar que no se realicen modificaciones no autorizadas en el TOE".
+Ejemplos de dispositivos que deben ser evaluados por CC son el dispositivo que conecta un consultorio médico en Alemania a Internet, el llamado Konnektor, y los microprocesadores que se utilizan en los pasaportes electrónicos europeos.
+
+AUTENTICACION DE ENTIDAD
+
+La autenticación de entidad es un proceso mediante el cual se asegura a un verificador la identidad de un probador cuya identidad se va a establecer.
+
+También se utiliza el término identificación. Tanto el verificador como el probador pueden ser personas, componentes de TI, 
+
+La identificación con nombre de usuario y contraseña es bastante común en aplicaciones de comercio electrónico, gobierno electrónico y salud electrónica. Sin embargo, existen ataques bastante efectivos contra este método de identificación. Un ejemplo es el de los ataques de phishing. En un ataque de este tipo, el adversario intenta adquirir de manera fraudulenta información confidencial, como nombres de usuario, contraseñas y datos de tarjetas de crédito, haciéndose pasar por una persona confiable en una comunicaccion electronnica.
+
+AUTENTICACION DE DATOS
+La autenticidad de los datos incluye la integridad y, además, requiere que se pueda determinar el origen de los datos. por ejemplo,
+los bancos deben asegurarse de que las transacciones financieras electrónicas sean auténticas.Igualmente,
+los correos electrónicos sensibles a la seguridad deben ser auténticos. Otro ejemplo son las actualizaciones de software.
+
+En software los datos deben ser autenticos de lo contraro un adversario puede proporcionar actualizacion que dañen los dispositivos
+
+EL NMO REPUDIO
+
+El no repudio es una propiedad de los datos o procesos que impide que una entidad niegue haber realizado una determinada acción, por ejemplo, haber enviado un correo electrónico o haber iniciado una transferencia de dinero.
+ los médicos que expidan recetas electrónicas no deben poder repudiar la receta con posterioridad
+
+OTROS OBJETIVOS DE SEGURIDAD
+Un ejemplo es el anonimato. Es una condición en la que se desconoce la verdadera identidad de un individuo. Por ejemplo en elecciones electronicas donde los votantes deben permanecer anonimos
+En el contexto de las elecciones electrónicas se debe aplicar la seguridad que es la incoercibilida donde Coercibilidad significa que un adversario puede obligar a un votante a emitir un voto determinado.
+
+SECRET KEY ENCRYPTION
+
+Ejemplos de tales criptosistemas son el Estándar de cifrado de datos (DES), que fue seleccionado como Estándar federal de procesamiento de información (FIPS) oficial para los Estados Unidos en 1976 y publicado en 1977, y su sucesor, el Estándar de cifrado avanzado (AES). aes ENTRO EN VIGOR COMO STANDAR EN 2022
+DES ya no es segura pero tiene variante sque es el DES-ede 
+
+Para este acuerdo clave, pueden utilizar un canal seguro, por ejemplo, un servicio de mensajería. Tambien se puede usar el protocolo de intercambio de claves Diffie-Hellman. Fue inventado en 1976 y no requiere un canal seguro.
+Para encriptar un mensaje dos personas deben intercambiar la clave secreta simetrica. Los datos que se cifran se denominan texto sin formato
+
+"os criptosistemas de clave secreta se denominan criptosistemas simetricos" ya que tanto las dos personas tienen la misma llave
+Todos los algoritmos tienen un tamaño de bloque de 128bitsexcepto DES-ede tiene tamañao de bloque 64. El modo de uso es el modo libro de códigos electrónico (ECB)
+
+PUBLIC KEY ENCRYPTION
+
+intercambiar claves secretas entre socios se volvio poco practico. por ello Una posible solución a este problema de distribución de claves es dejar que una autoridad central,el centro de claves ,ditribuya claves secretas a todos los usuarios. gravcias a eso pueden comunicarse de manera secreta un ejmplo de esta arquitectura es el teléfono móvil estándar GSM.
+
+GSM. De hecho, GSM utiliza muchos centros clave interconectados.Cada proveedor GSM opera uno o más centros clave.  la desventaja es que El centro clave puede potencialmente
+acceder a todos los mensajes secretos esto solo soluciona donde todos con fian en las autoridades centtrales
+
+En un entorno descentralizado como Internet, la distribución de claves por parte de los centros clave es
+inadecuado. Para tal situación, se inventó la criptografía de clave pública.
+
+La idea principal de un criptosistema de clave pública es que se utilizan dos claves diferentes pero relacionadas: una para el cifrado y otra para el descifrado.  como la
+la clave de descifrado no se puede determinar a partir de la clave de cifrado, la clave de cifrado
+puede hacerse público.
+
+
+Bob mantiene la clave de descifrado en secreto mientras su clave de cifrado se hace pública.  La clave de cifrado se denomina clave pública de Bob; la
+la clave de descifrado correspondiente se llama clave privada de Bob. Ella usa la clave pública de Bob para cifrar el mensaje.Dado que Bob mantiene en secreto su clave privada, el mensaje de Alice sigue siendo confidencial
+
+Los criptosistemas de clave pública también se denominan criptosistemas asimétricos.}
+Llave pública
+el cifrado no solo proporciona confidencialidad. También se puede utilizar para implementar
+protocolos de identificación.
+
+Para identificar alicia cifra un numero aleatorio con la llave publica de bob y  bob lo descifra y devuelve el numero y  es el mismo que envio alicia se confiram su identidad.
+
+Un problema es que Alice puede hacer que Bob descifre los mensajes de su elección, ya que es posible que Bob no pueda distinguir los números aleatorios cifrados de otros textos cifrados. Por esta razón, el cifrado de clave pública normalmente no se usa para la autenticación de entidades. En lugar de ello se utilizan firmas digitales
+
+
+Why Public Key Infrastructure?
+
+La ventaja de la criptografía de clave pública es que no es necesario intercambiar claves secretas.
+requerido.
+La gestión eficiente y segura de los pares de claves durante todo su ciclo de vida
+es el propósito de las infraestructuras de clave pública
+FASES:
+-    La primera fase es la genración de claves.(par de claves) Una opción es dejar que los usuarios generen sus propios pares de claves . Entonces pueden
+    evitar que las claves privadas sean reveladas a personas no autorizadas
+-    La fase es el uso clave. En esta fase, la clave privada se utiliza para descifrar o firmar datos.
+-    En la etapa final de su ciclo de vida, un par de claves deja de ser válido
+
+- dESVENTAJAS DE GENERAR CLAVES PUBLICA POR USUARIOS la maquian puede estar infectada con malware
+parece seguro crear con hardware dedicado con tarjetas inteligentes sin embargo para un sistema que cifre con Las claves RSA (las claves RSA se generan usando
+dos números primos aleatorios de aproximadamente el mismo tamaño. En la generación de numeros primos se utilizan generadores de números pseudoaleatorios (PRNG). Esos PRNG
+debe ser criptográficamente seguro, lo que significa que la predicción de su resultado debe ser
+inviable Esto es necesario para evitar que los adversarios reconstruyan las claves privadas de los usuarios. ) no puede tener recursos computacionales que creen PRGN seguros
+
+Puede que untercero de confianza genere las clves pero tambiens e compromete la confidencialidad de la clave privadas
+Establecer un par de claves no es proceso facil para una PKI.
+UNa clave publica se invalida cuando esta, esta comprometida O CADUCADA
+
+* La tarea más importante y compleja de una PKI es hacer que las claves públicas estén disponibles para el
+usuarios POR QUE las llaves deben poder verificar su autenticidad y validez y deben conocer sus propiedades.  Si no se garantiza la autenticidad de las claves públicas de Bob, el adversario
+Oscar puede reemplazar las claves públicas de Bob con sus propias claves públicas
+
+
+
+- La siguiente tarea de una PKI es lidiar con el problema de que las claves públicas se vuelvan
+inseguro si la tarjeta inteligente en
+que Alice guarda su clave de firma secreta es robada, la clave pública correspondiente
+ya no debe usarse para verificar las firmas de Alice. Los usuarios de PKI deben estar informados
+que este es el caso. Aún más dramático, si un criptosistema de clave pública se rompe,
+entonces todas las claves públicas que se han emitido utilizando este criptosistema de clave pública deben
+ser invalidado.
+
+-  tarea de una PKI en la fase de uso de claves es habilitar la copia de seguridad de claves siempre que
+necesario.
+- La tarea final de una PKI en la fase de uso es respaldar la protección de las claves privadas Esto se puede hacer creando componentes seguros de software o hardware como
+tarjetas inteligentes disponibles y la gestión de esos componentes.
+Cuando caducan casi siempre debes guardarlo asi se utiliza para verificar la autenticidad a largo plazo o no repudio

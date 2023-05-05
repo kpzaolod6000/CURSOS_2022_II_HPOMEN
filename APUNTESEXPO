@@ -1,0 +1,29 @@
+Independientemente de la arquitectura particular o el lenguaje de programación que pueda usar, existen algunas consideraciones típicas que deben tenerse en cuenta al diseñar una solución paralela:
+
+
+
+Un posible enfoque para paralelizar un cálculo de suma de prefijos primero realiza una partición de datos donde la matriz de entrada A se divide por igual entre p núcleos. Luego, cada núcleo calcula la suma de prefijos de su matriz local en paralelo. Posteriormente, el valor más a la derecha de cada arreglo local se toma para formar un arreglo B de tamaño p para el cual se calcula otra suma de prefijos. Esto se puede hacer en paralelo en pasos log2(p). Cada
+
+
+Diseño de un clasificador ternario donde cada imagen de entrada se clasifica para contener un gato, un perro o un ser humano.
+Un enfoque de datos paralelos ejecuta el clasificador completo en cada procesador o núcleo en diferentes imágenes. Un enfoque de tareas paralelas ejecuta un clasificador binario diferente en cada procesador o núcleo en todas las imágenes y luego combina los resultados para cada imagen.
+
+
+
+Otros esquemas de partición son más complejos y requieren una comunicación significativa entre tareas. 
+
+
+EJMPLO
+
+Por ejemplo, la implementación del cálculo de prefijos paralelos descrito usando múltiples subprocesos puede requerir una barrera de sincronización entre las diferentes etapas del algoritmo para garantizar que los datos requeridos estén disponibles para la etapa subsiguiente. Una implementación del código de plantilla que utiliza MPI puede requerir un paso de sincronización para garantizar que la fila y las columnas requeridas se hayan recibido de los procesos vecinos antes de que se puedan actualizar los valores de borde de la submatriz asignada. 
+
+ Por ejemplo, en el enfoque de datos paralelos, las imágenes de entrada podrían dividirse en varios lotes. Una vez que un proceso ha completado la clasificación de su lote asignado, el planificador asigna dinámicamente un nuevo lote.
+
+
+
+Por lo tanto, un enfoque de datos paralelos en el que se usa el mismo modelo en cada GPU pero se entrena con diferentes imágenes no siempre funciona.
+
+Este enfoque divide los pesos de la red neuronal por igual entre las GPU (ver Fig. 1.11). Cada GPU solo necesita almacenar y trabajar en una parte del modelo. Sin embargo, todas las GPU deben cooperar en el entrenamiento de este modelo con un conjunto determinado de imágenes. El vector de salida distribuido generado después de cada capa debe recopilarse en cada GPU antes de que pueda continuar el cálculo de la siguiente capa (es decir, se requieren tanto la comunicación como la sincronización).
+
+
+
